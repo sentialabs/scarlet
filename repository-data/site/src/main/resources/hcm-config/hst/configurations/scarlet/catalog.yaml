@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/scarlet/hst:catalog:
+      jcr:primaryType: hst:catalog
+      /scarlet-catalog:
+        jcr:primaryType: hst:containeritempackage

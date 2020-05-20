@@ -1,0 +1,5 @@
+definitions:
+  namespace:
+    scarlet:
+      uri: http://www.scarlet.com/scarlet/nt/1.0
+      cnd: namespaces/scarlet.cnd

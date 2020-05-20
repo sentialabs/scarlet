@@ -1,0 +1,6 @@
+site: scarlet
+group: scarlet
+project: scarlet
+module:
+  name: scarlet-repository-data-site-development
+  after: scarlet-repository-data-site

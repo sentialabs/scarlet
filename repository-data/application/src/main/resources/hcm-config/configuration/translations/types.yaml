@@ -1,0 +1,32 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:types/scarlet:contentdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Simple Document
+        scarlet:content: Content
+        scarlet:introduction: Introduction
+        scarlet:publicationdate: Publication date
+        scarlet:title: Title
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Eenvoudig Document
+        scarlet:content: Inhoud
+        scarlet:introduction: Introductie
+        scarlet:publicationdate: Publicatiedatum
+        scarlet:title: Titel
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Document simple
+        scarlet:content: Contenu
+        scarlet:introduction: Introduction
+        scarlet:publicationdate: Date de publication
+        scarlet:title: Titre
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        jcr:name: Einfaches Dokument
+        scarlet:content: Inhalt
+        scarlet:introduction: Einführung
+        scarlet:publicationdate: Publikationsdatum
+        scarlet:title: Titel

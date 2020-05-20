@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:namespaces/scarlet:
+      jcr:primaryType: hipposysedit:namespace
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: b84b050c-2452-40d5-8691-59664522ef81

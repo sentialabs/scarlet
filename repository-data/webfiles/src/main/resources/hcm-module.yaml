@@ -1,0 +1,5 @@
+group: 
+  name: scarlet
+project: scarlet
+module:
+  name: scarlet-repository-data-webfiles

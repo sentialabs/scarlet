@@ -1,0 +1,7 @@
+group: 
+  name: scarlet
+  after: hippo-cms
+project: scarlet
+module: 
+  name: scarlet-repository-data-development
+  after: scarlet-repository-data-application
