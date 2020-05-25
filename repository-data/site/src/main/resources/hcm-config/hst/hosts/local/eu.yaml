@@ -1,0 +1,19 @@
+definitions:
+  config:
+    /hst:hst/hst:hosts/local/eu:
+      .meta:residual-child-node-category: content
+      jcr:primaryType: hst:virtualhost
+      hst:scheme: http
+      hst:showcontextpath: false
+      hst:showport: false
+      /acme:
+        .meta:residual-child-node-category: content
+        jcr:primaryType: hst:virtualhost
+        /local-scarlet:
+          .meta:residual-child-node-category: content
+          jcr:primaryType: hst:virtualhost
+          /hst:root:
+            .meta:residual-child-node-category: content
+            jcr:primaryType: hst:mount
+            hst:homepage: root
+            hst:mountpoint: /hst:scarlet/hst:sites/scarlet
