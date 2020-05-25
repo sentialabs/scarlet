@@ -1,0 +1,16 @@
+definitions:
+  config:
+    /hst:platform/hst:hosts/local/eu:
+      jcr:primaryType: hst:virtualhost
+      hst:scheme: https
+      hst:schemenotmatchresponsecode: 301
+      hst:showcontextpath: false
+      hst:showport: false
+      /acme:
+        jcr:primaryType: hst:virtualhost
+        /cms-local:
+          jcr:primaryType: hst:virtualhost
+          /hst:root:
+            jcr:primaryType: hst:mount
+            hst:ismapped: false
+            hst:namedpipeline: WebApplicationInvokingPipeline
