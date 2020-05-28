@@ -1,8 +1,8 @@
 ## Using TLS/SSL in your development environment
 
-This project is a working hands-on example of how you can set up your local machine with a fake TLS/SSL certificate and access your locally running instance of the Bloomreach web application via HTTPS instead of HTTP. You can find an article describing how to create your own fake certificates here: [FIXME]
+This project is a working hands-on example of how you can set up your local machine with a fake TLS/SSL certificate and access your locally running instance of the Bloomreach web application via HTTPS instead of HTTP. You can find a blog post describing how to create your own fake certificates here: [FIXME]
 
-The project itself is a very minimalist Bloomreach project that has virtually no features other than configuration for making HTTPS work (and only for the URLs that I mention here). Its only function is to serve the default homepage and supply the bare minimum CMS, thus demonstrating that content and CMS functions are working correctly over HTTPS.
+The project itself is a very minimalistic Bloomreach project that has virtually no features other than configuration for making HTTPS work (and only for the URLs that I mention here). Its only function is to serve the default homepage and supply the bare minimum CMS, thus demonstrating that content and CMS functions are working correctly over HTTPS.
 
 You can build and run the project in the usual way:
 ```
@@ -12,6 +12,51 @@ mvn -P cargo.run
 The project uses version 14.1 of the Bloomreach libraries and works both with JDK 8 and JDK 11. 
 
 When you run the application with ```cargo.run``` you can point your browser as usual to ```http://localhost:8080/cms``` and ```site``` in order to access the application.
+
+---
+### Setting up Bloomreach configuration
+The [Bloomreach documentation](https://documentation.bloomreach.com/14/library/concepts/request-handling/hst-seamless-https-support.html)
+describes what to do in some detail. In this project, I did the following (using console):
+
+Added two new Virtual Host Group as a sibling to the existing __dev-localhost__ , one for the website under ```hst:scarlet``` and one for CMS under ```hst:platform``` . The idea is to leave configuration for localhost:8080 intact so that you will still be able to access the applications using HTTP in case you made changes that cause the HTTPS version to stop working.
+
+Then I created a set of Virtual Host nodes for the reverse path of the url, again one for the site and one for CMS.
+
+```
+hst:platform
+  hst:hosts
+    dev-localhost
+       ...
+    local        # this virtualhost group is added for project Scarlet
+      eu
+        acme
+           cms-local
+             hst:root
+  ...
+hst:scarlet
+  hst:hosts
+    dev-localhost
+       ...
+    local        # this virtualhost group is added for project Scarlet
+      eu
+        acme
+           local-scarlet
+             hst:root
+```
+Both virtualhost groups have an attribute for the defaultport:
+```
+    /local:
+       hst:defaultport: 443
+```
+and on the ```eu``` nodes these attributes are defined:
+```
+      /eu:
+        hst:scheme : https
+        hst:schemenotmatchresponsecode: 301
+        hst:showcontentpath: false
+        hst:showport: false
+```
+The mount points indicated by ```hst:root``` are copied unchanged from their ```dev-localhost``` counterparts.
 
 ---
 
@@ -37,7 +82,7 @@ https://httpd.apache.org/docs/2.4/platform/windows.html
 ---
 
 __Configuring Apache__
-The Bloomreach documentation has a good step by step procedure description on what to do:
+The Bloomreach documentation has a good step by step description on what to do:
 
 https://documentation.bloomreach.com/14/library/deployment/configuring/configure-apache-httpd-as-reverse-proxy-for-hippo.html
 
@@ -50,7 +95,7 @@ a2enmod ssl proxy_http headers rewrite
 Sorry, ```a2enmod``` and ```a2ensite``` only work on Ubuntu. For other distros and for Windows you will probably have to include the modules and the config files in the overall ```httpd.conf``` master configuration file.
 
 
-Anyway, I have prepared two drop in configuration files for Apache that you can copy from this project to your Apache confguration directory and use as-is. You can find them here in the downloaded project source:
+Anyroads, I have prepared two drop in configuration files for Apache that you can copy from this project to your Apache confguration directory and use as-is. You can find them here in the downloaded project source:
 ```
 apache-and-dns/apache2/sites-available/
 ```
