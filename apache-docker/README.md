@@ -27,7 +27,7 @@ The Docker image that we need to run Apache is made with this command:
 ```
 **Note** there is a dot at the end of this command.
 
-You can create a container from this image and run it with this command (but fill in your own IP):
+You can create a container from this image and run it with this command (but fill in your own IP address):
 ```
 docker run -it --name rundfunk --hostname rundfunk -e DEVHOST=192.168.1.15 -p:80:80 -p:443:443 dimario/apache:1.0
 ```
@@ -42,7 +42,7 @@ To see if Apache is running in the container, point your browser to `http://loca
 
 The **--name rundfunk** argument in the `docker run` names the container. After terminating, that name is still in use because the terminated container still exists. If you try a second `docker run` using this same name you will get an "name already in use" error. Instead, you can either restart the terminated container:
 ```
-   docker start -it rundfunk
+   docker start rundfunk
 ```
 or delete it:
 ```
