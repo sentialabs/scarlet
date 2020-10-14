@@ -32,9 +32,15 @@ You can create a container from this image and run it with this command (but fil
 docker run -it --name rundfunk --hostname rundfunk -e DEVHOST=192.168.1.15 -p:80:80 -p:443:443 dimario/apache:1.0
 ```
 * in the **-e DEVHOST** argument you must fill in the IP address of your own development machine. This environment variable is patched into the Apache configuration inside the container.
+* the **--name rundfunk** names the *container* for convenience. You can use this name in various docker commands that do things with the container.
+* the **--hostname rundfunk** is added to the `/etc/hosts` file of the container, which is managed by Docker.
+* There is no technical reason to use the same value for the **--name** and **--hostname** arguments. There is no hidden magic that relies on these names being the same.
+
 
 ## Troubleshooting
-The **--name rundfunk** argument in the `docker run` names the container. After terminating, that name is still in use because the terminated container still exists. If you try a second `docker run` using this same name you will get an "name already in use" error. Istead, you can either restart the terminated container:
+To see if Apache is running in the container, point your browser to `http://localhost` If Apache workt, it will serve the index file located at `/var/www/pchost/index.html` from inside the container which states *It Works!*.
+
+The **--name rundfunk** argument in the `docker run` names the container. After terminating, that name is still in use because the terminated container still exists. If you try a second `docker run` using this same name you will get an "name already in use" error. Instead, you can either restart the terminated container:
 ```
    docker start -it rundfunk
 ```
