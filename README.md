@@ -1,6 +1,6 @@
 ## Using TLS/SSL in your development environment
 
-This project is a working hands-on example of how you can set up your local machine with a fake TLS/SSL certificate and access your locally running instance of the Bloomreach web application via HTTPS instead of HTTP. You can find a blog post describing how to create your own fake certificates here: [FIXME]
+This project is a working hands-on example of how you can set up your local machine with a fake TLS/SSL certificate and access your locally running instance of the Bloomreach web application via HTTPS instead of HTTP. You can find a [blog post describing how to create your own fake certificates here](https://www.sentiatechblog.com/using-tls-ssl-in-web-application-development) 
 
 The project itself is a very minimalistic Bloomreach project that has virtually no features other than configuration for making HTTPS work (and only for the URLs that I mention here). Its only function is to serve the default homepage and supply the bare minimum CMS, thus demonstrating that content and CMS functions are working correctly over HTTPS.
 
